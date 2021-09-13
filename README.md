@@ -1,4 +1,4 @@
-<p align="center"><img src="https://img.icons8.com/fluency/100/000000/tropics.png"/></p>  
+<p align="center"><img src="<img src="https://img.icons8.com/fluency/48/000000/login-as-user.png"/>"/></p>  
 
 # <p align="center">Mesto</p>
 
