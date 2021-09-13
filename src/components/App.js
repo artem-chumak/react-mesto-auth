@@ -7,6 +7,8 @@
 // todo 7. Поменять экспорты. Убрать дефолтные.
 // todo 8. Настроить ключ, чтобы не вводить пороль каждый раз ssh.
 // todo 9. Сделать автоматическое форматирование кода.
+// todo 10. Аутентификация.
+// todo 11. React from react. Is it need for work? Check every comps.
 
 import { useState, useEffect } from "react";
 import { api } from "../utils/Api";
@@ -19,6 +21,10 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import ImagePopup from "./ImagePopup";
 import DeleteConfirmPopup from "./DeleteConfirmPopup";
+import MenuMobile from './MenuMobile';
+import Login from './Login';
+import Register from './Register';
+import InfoToolTip from './InfoTooltip';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -160,7 +166,13 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
+{/* {Тут должен быть тернарник который будет реагировать на то, что юзер залогинен} */}
+        <MenuMobile />
+
         <Header />
+        <Login /*handleLogin={handleLogin}*/ />
+        <Register /* handleRegister={handleRegister} isDataSet={isDataSet}*/ />
+
         <Main
           handleEditProfileClick={onEditProfile}
           handleAddPlaceClick={onAddPlace}
@@ -205,6 +217,7 @@ function App() {
           onCardDelete={handleCardDelete}
           isLoading={isLoading}
         />
+        {/* <InfoToolTip /> */}
       </div>
     </CurrentUserContext.Provider>
   );
