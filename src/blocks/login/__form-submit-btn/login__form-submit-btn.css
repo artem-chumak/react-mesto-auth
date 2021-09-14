@@ -10,6 +10,7 @@
   line-height: 1.2;
   text-align: center;
   transition: opacity 0.1s linear;
+  border-radius: 2px;
 }
 
 .login__form-submit-btn:hover {

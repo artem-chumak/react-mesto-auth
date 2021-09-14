@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 
-const Login = (/*{ handleLogin }*/) => {
+const Login = ({ handleLogin }) => {
 
-  // const [data, setData] = useState({
-  //   email: "",
-  //   password: "",
-  // });
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setData({
-  //     ...data,
-  //     [name]: value,
-  //   });
-  // };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { email, password } = data;
-  //   handleLogin(email, password);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = data;
+    handleLogin(email, password);
+  };
 
   return (
-    <div /*onSubmit={handleSubmit}*/ className="login">
+    <div onSubmit={handleSubmit} className="login">
 
       <h2 className="login__header">Вход</h2>
 
@@ -33,8 +33,8 @@ const Login = (/*{ handleLogin }*/) => {
           required
           name="email"
           type="email"
-          // value={data.email || ''}
-          // onChange={handleChange}
+          value={data.email || ''}
+          onChange={handleChange}
           placeholder="E-mail"
         />
 
@@ -44,13 +44,14 @@ const Login = (/*{ handleLogin }*/) => {
           required
           name="password"
           type="password"
-          // value={data.password || ''}
-          // onChange={handleChange}
+          value={data.password || ''}
+          onChange={handleChange}
           placeholder="Пароль"
         />
 
         <button type="submit" className="login__form-submit-btn">Войти</button>
       </form>
+      <p className="register__footer">&nbsp;</p>
     </div>
   )
 }

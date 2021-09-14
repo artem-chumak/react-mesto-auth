@@ -5,6 +5,7 @@
   background: none;
   border: none;
   padding: 0;
+  text-decoration: none;
 }
 
 .header__link:hover {

@@ -1,26 +1,49 @@
 import logo from "../images/logo-header.svg";
-import { Link, useLocation } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ handleLogout, email, handleMenuOpen, isMenuOpen }) => {
   return (
     <header className="header section">
       <img className="logo header__logo" src={logo} alt="Логотип" />
-      <div className="header__info">
-        <span className="header__email">email.mail.mu</span>
-        <button
-          // onClick={}
-          className="button header__link">Выйти</button>
-      </div>
-      <button
-        className="header__menu header__menu_type_closed"
-        // onClick={}
-      >
-        <span/>
-      </button>
-      
-      
-      {/* <button className="button header__link" href="#" >Войти</button> */}
+      <Switch>
 
+      <Route exact path="/">
+
+        <div className="header__info">
+          <span className="header__email">{email}</span>
+          <Link
+            to="/sign-in"
+            onClick={handleLogout}
+            className="button header__link"
+          >
+            Выйти
+          </Link>
+        </div>
+        <button className={
+          isMenuOpen
+          ?"header__menu header__menu_type_opened"
+          :"header__menu header__menu_type_closed"
+        }
+        onClick ={handleMenuOpen}
+        >
+        <span/>
+        </button>
+
+      </Route>
+
+        <Route path="/sign-in">
+          <Link to="/sign-up" className="button header__link">
+          Регистрация
+          </Link>
+        </Route>
+
+        <Route path="/sign-up">
+          <Link to="/sign-in" className="button header__link">
+            Войти
+          </Link>
+        </Route>
+
+      </Switch>
     </header>
   );
 };

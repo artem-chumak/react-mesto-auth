@@ -1,10 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MenuMobile = ({ email, isShowMenu, signOut }) => {
+
+const MenuMobile = ({ email, isMenuOpen, handleLogout }) => {
   return (
-    <div className="menu_mobile">
-        <span className="menu__email">{email}email@email.mu</span>
-        <button className="button menu__link" onClick={signOut}>Выйти</button>
+    <div className={
+      isMenuOpen
+      ? "menu_mobile"
+      : "menu_bobile menu_hiden"}>
+        <span className="menu__email">{email}</span>
+        {/* <button className="button menu__link" onClick={handleLogout}>Выйти</button> */}
+        <Link
+            to="/sign-in"
+            onClick={handleLogout}
+            className="button menu__link"
+          >
+            Выйти
+          </Link>
     </div>
   );
 }
