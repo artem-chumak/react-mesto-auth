@@ -240,6 +240,25 @@ function App() {
     setLoggedIn(false);
   };
 
+  const tokenCheck = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      auth
+        .getContent(token)
+        .then((res) => {
+          if (res) {
+            setUserData({ email: res.data.email });
+            setLoggedIn(true);
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  };
+
+  React.useEffect(() => {
+    tokenCheck();
+  }, []);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
