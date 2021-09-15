@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/mesto-react/static/css/main.a04135bc.chunk.css",
+    "main.js": "/mesto-react/static/js/main.caba888d.chunk.js",
+    "main.js.map": "/mesto-react/static/js/main.caba888d.chunk.js.map",
+    "runtime-main.js": "/mesto-react/static/js/runtime-main.b2d4fdea.js",
+    "runtime-main.js.map": "/mesto-react/static/js/runtime-main.b2d4fdea.js.map",
+    "static/js/2.bbc158e5.chunk.js": "/mesto-react/static/js/2.bbc158e5.chunk.js",
+    "static/js/2.bbc158e5.chunk.js.map": "/mesto-react/static/js/2.bbc158e5.chunk.js.map",
+    "static/js/3.f420a3c3.chunk.js": "/mesto-react/static/js/3.f420a3c3.chunk.js",
+    "static/js/3.f420a3c3.chunk.js.map": "/mesto-react/static/js/3.f420a3c3.chunk.js.map",
+    "index.html": "/mesto-react/index.html",
+    "static/css/main.a04135bc.chunk.css.map": "/mesto-react/static/css/main.a04135bc.chunk.css.map",
+    "static/js/2.bbc158e5.chunk.js.LICENSE.txt": "/mesto-react/static/js/2.bbc158e5.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/mesto-react/static/media/Like-button_active.fe17a515.svg",
+    "static/media/Error-icon.df8eddf6.svg": "/mesto-react/static/media/Error-icon.df8eddf6.svg",
+    "static/media/Succeed-icon.1b6082f8.svg": "/mesto-react/static/media/Succeed-icon.1b6082f8.svg",
+    "static/media/logo-header.5f3664ca.svg": "/mesto-react/static/media/logo-header.5f3664ca.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b2d4fdea.js",
+    "static/js/2.bbc158e5.chunk.js",
+    "static/css/main.a04135bc.chunk.css",
+    "static/js/main.caba888d.chunk.js"
+  ]
+}
