@@ -1,4 +1,4 @@
-.register__form-input {
+.entrance__input {
   border: none;
   padding-bottom: 13px;
   border-bottom: 2px solid #E5E5E5;
@@ -10,22 +10,22 @@
   margin-bottom: 30px;
 }
 
-.register__form-input:focus {
+.entrance__input:focus {
   outline: none;
 }
 
-.register__form-input:last-of-type {
+.entrance__input:last-of-type {
   margin-bottom: 216px;
 }
 
-.register__form-input::placeholder {
+.entrance__input::placeholder {
   color: #ccc;
   font-size: 14px;
   line-height: 1.1;
 }
 
-@media screen and (max-width: 558px) {
-  .register__form-input:last-of-type {
+@media screen and (max-width: 425px) {
+  .entrance__input:last-of-type {
     margin-bottom: 173px;
   }
 }

@@ -1,8 +1,13 @@
-import React from "react";
 import SucceedIcon from "../images/Succeed-icon.svg";
 import ErrorIcon from "../images/Error-icon.svg";
 
-const InfoToolTip = ({ onCloseOverlay, isOpen, onClose, title, icon }) => {
+export const InfoToolTip = ({
+  onCloseOverlay,
+  isOpen,
+  onClose,
+  title,
+  icon,
+}) => {
   return (
     <section
       onClick={onCloseOverlay}
@@ -13,7 +18,11 @@ const InfoToolTip = ({ onCloseOverlay, isOpen, onClose, title, icon }) => {
       }
     >
       <div className="popup__container popup__container_type_notification">
-        <img className="popup__icon" src={icon ? SucceedIcon : ErrorIcon} alt="Иконка" />
+        <img
+          className="popup__icon"
+          src={icon ? SucceedIcon : ErrorIcon}
+          alt="Иконка"
+        />
         <h2 className="popup__notification">{title}</h2>
         <button
           onClick={onClose}
@@ -25,5 +34,3 @@ const InfoToolTip = ({ onCloseOverlay, isOpen, onClose, title, icon }) => {
     </section>
   );
 };
-
-export default InfoToolTip;

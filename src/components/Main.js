@@ -1,8 +1,8 @@
-import React from "react";
-import Card from "./Card";
+import { useContext } from "react";
+import { Card } from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const Main = ({
+export const Main = ({
   handleEditProfileClick,
   handleAddPlaceClick,
   handleEditAvatarClick,
@@ -11,7 +11,7 @@ const Main = ({
   cards,
   onCardLike,
 }) => {
-  const currentUser = React.useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="main">
@@ -56,5 +56,3 @@ const Main = ({
     </main>
   );
 };
-
-export default Main;

@@ -1,14 +1,15 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import { useEffect, useRef } from "react";
+import { PopupWithForm } from "./PopupWithForm";
 
-const EditAvatarPopup = ({
+export const EditAvatarPopup = ({
   isOpen,
   onClose,
   onUpdateAvatar,
   onCloseOverlay,
   isLoading,
+  isDataSet,
 }) => {
-  const avatarRef = React.useRef();
+  const avatarRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +17,12 @@ const EditAvatarPopup = ({
       avatar: avatarRef.current.value,
     });
   };
+
+  useEffect(() => {
+    if (isDataSet) {
+      avatarRef.current.value = "";
+    }
+  }, [isDataSet]);
 
   return (
     <PopupWithForm
@@ -40,5 +47,3 @@ const EditAvatarPopup = ({
     </PopupWithForm>
   );
 };
-
-export default EditAvatarPopup;

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-const Login = ({ handleLogin }) => {
-
+export const Login = ({ handleLogin }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -22,38 +21,37 @@ const Login = ({ handleLogin }) => {
   };
 
   return (
-    <div onSubmit={handleSubmit} className="login">
+    <div className="entrance">
+      <h2 className="entrance__title">Вход</h2>
 
-      <h2 className="login__header">Вход</h2>
-
-      <form className="login__form">
+      <form onSubmit={handleSubmit} className="entrance__form">
         <input
-          className="login__form-input"
+          className="entrance__input"
           id="email"
           required
           name="email"
           type="email"
-          value={data.email || ''}
+          value={data.email}
           onChange={handleChange}
           placeholder="E-mail"
         />
 
         <input
-          className="login__form-input"
+          className="entrance__input"
           id="password"
           required
           name="password"
           type="password"
-          value={data.password || ''}
+          value={data.password}
           onChange={handleChange}
           placeholder="Пароль"
         />
 
-        <button type="submit" className="login__form-submit-btn">Войти</button>
+        <button type="submit" className="entrance__button">
+          Войти
+        </button>
       </form>
-      <p className="register__footer">&nbsp;</p>
+      <p className="entrance__caption"></p>
     </div>
-  )
-}
-
-export default Login;
+  );
+};

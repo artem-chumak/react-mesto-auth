@@ -26,13 +26,13 @@
 }
 
 .header__menu_type_closed:before {
-  animation: close-one ease 0.4s forwards;
+  animation: close-one ease 0.5s forwards;
 }
 
 .header__menu_type_closed span {
-  animation: close-two ease 0.4s forwards;
+  animation: close-two ease 0.5s forwards;
 }
 
 .header__menu_type_closed:after {
-  animation: close-three ease 0.4s forwards;
+  animation: close-three ease 0.5s forwards;
 }

@@ -1,4 +1,4 @@
-.register__header {
+.entrance__title {
   margin: 0 0 50px;
   font-size: 24px;
   font-weight: 900;
@@ -6,8 +6,8 @@
   text-align: center;
 }
 
-@media screen and (max-width: 558px) {
-  .register__header {
+@media screen and (max-width: 425px) {
+  .entrance__title {
     margin-bottom: 40px;
     font-size: 20px;
     line-height: 1.2;

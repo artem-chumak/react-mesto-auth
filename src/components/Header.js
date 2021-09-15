@@ -1,39 +1,37 @@
 import logo from "../images/logo-header.svg";
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link } from "react-router-dom";
 
-const Header = ({ handleLogout, email, handleMenuOpen, isMenuOpen }) => {
+export const Header = ({ handleLogout, email, toggleMenu, isMenuOpen }) => {
   return (
     <header className="header section">
       <img className="logo header__logo" src={logo} alt="Логотип" />
       <Switch>
-
-      <Route exact path="/">
-
-        <div className="header__info">
-          <span className="header__email">{email}</span>
-          <Link
-            to="/sign-in"
-            onClick={handleLogout}
-            className="button header__link"
+        <Route exact path="/">
+          <div className="header__info">
+            <span className="header__email">{email}</span>
+            <Link
+              to="/sign-in"
+              onClick={handleLogout}
+              className="button header__link"
+            >
+              Выйти
+            </Link>
+          </div>
+          <button
+            className={
+              isMenuOpen
+                ? "header__menu header__menu_type_opened"
+                : "header__menu header__menu_type_closed"
+            }
+            onClick={toggleMenu}
           >
-            Выйти
-          </Link>
-        </div>
-        <button className={
-          isMenuOpen
-          ?"header__menu header__menu_type_opened"
-          :"header__menu header__menu_type_closed"
-        }
-        onClick ={handleMenuOpen}
-        >
-        <span/>
-        </button>
-
-      </Route>
+            <span />
+          </button>
+        </Route>
 
         <Route path="/sign-in">
           <Link to="/sign-up" className="button header__link">
-          Регистрация
+            Регистрация
           </Link>
         </Route>
 
@@ -42,10 +40,7 @@ const Header = ({ handleLogout, email, handleMenuOpen, isMenuOpen }) => {
             Войти
           </Link>
         </Route>
-
       </Switch>
     </header>
   );
 };
-
-export default Header;

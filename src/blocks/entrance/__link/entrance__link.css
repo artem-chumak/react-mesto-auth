@@ -1,9 +1,8 @@
-  
-.register__login-link {
+.entrance__link {
   text-decoration: none;
   color: #fff;
 }
 
-.register__login-link:hover {
+.entrance__link:hover {
   opacity: 0.6;
 }

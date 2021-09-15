@@ -1,6 +1,4 @@
-import React from "react";
-
-const DeleteConfirmPopup = ({
+export const DeleteConfirmPopup = ({
   card,
   onClose,
   onCloseOverlay,
@@ -49,5 +47,3 @@ const DeleteConfirmPopup = ({
     </section>
   );
 };
-
-export default DeleteConfirmPopup;

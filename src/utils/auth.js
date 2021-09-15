@@ -1,4 +1,4 @@
-export const URL = 'https://auth.nomoreparties.co';
+const URL = 'https://auth.nomoreparties.co';
 
 const handleResponse = (res) => {
   if (res.ok) {

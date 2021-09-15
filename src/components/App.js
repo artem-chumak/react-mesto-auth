@@ -1,72 +1,66 @@
-// todo 1. Добавить спинер на первую загрузку
-// todo 2. Поменять фавикон
-// todo 3. Валидация форм
-///// todo 4. Окно удаления карточки
-// todo 5. Очистка форм после сабмита
-// todo 6. Прописать пути Router для сайта. Страница 404.
-// todo 7. Поменять экспорты. Убрать дефолтные.
-// todo 8. Настроить ключ, чтобы не вводить пороль каждый раз ssh.
-// todo 9. Сделать автоматическое форматирование кода.
-// todo 10. Аутентификация.
-// todo 11. React from react. Is it need for work? Check every comps.
+// todo - Добавить спинер на загрузку main
+// todo - Поменять фавикон
+// todo - Валидация форм
+// todo - Страница 404.
+// todo - Make comp Sign.js and use in Login.js and Rigister.js
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
 
-import * as auth from "../utils/auth";
-import { api } from "../utils/Api";
+import { ProtectedRoute } from "./ProtectedRoute";
+import * as auth from "../utils/auth"; // just methods
+import { api } from "../utils/Api"; // class
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-import Header from "./Header";
-import Main from "./Main";
-import Footer from "./Footer";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import ImagePopup from "./ImagePopup";
-import DeleteConfirmPopup from "./DeleteConfirmPopup";
-import MenuMobile from "./MenuMobile";
-import Login from "./Login";
-import Register from "./Register";
-import InfoToolTip from "./InfoTooltip";
+import { Header } from "./Header";
+import { Main } from "./Main";
+import { Footer } from "./Footer";
+import { EditProfilePopup } from "./EditProfilePopup"; // onChange
+import { EditAvatarPopup } from "./EditAvatarPopup"; // input data as Ref
+import { AddPlacePopup } from "./AddPlacePopup"; // inputs' data as Ref
+import { ImagePopup } from "./ImagePopup";
+import { DeleteConfirmPopup } from "./DeleteConfirmPopup";
+import { MenuMobile } from "./MenuMobile";
+import { Login } from "./Login"; // inputs' data as object + onChange
+import { Register } from "./Register"; // inputs' data as object + onChange
+import { InfoToolTip } from "./InfoTooltip";
 
 function App() {
+  // USER & CARDS
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({
     name: "",
     about: "",
     id_: "",
   });
+  // POPUPS
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
-  const [deletedCard, setDeletedCard] = useState({ name: "", link: "" });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // buttons
+  const [infoToolTipData, setInfoToolTipData] = useState({
+    title: "",
+    icon: "",
+  });
+  // CARDS
+  const [selectedCard, setSelectedCard] = useState({
+    name: "",
+    link: "",
+  });
+  const [deletedCard, setDeletedCard] = useState({
+    name: "",
+    link: "",
+  });
+  // AUTH
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isDataSet, setIsDataSet] = useState(false);
   const [userData, setUserData] = useState({
     email: "",
   });
-  const history = useHistory();
-  const [isDataSet, setIsDataSet] = useState(false);
-  const [infoToolTipData, setInfoToolTipData] = useState({
-    title: "Что-то пошло не так! Попробуйте ещё раз.",
-    icon: false,
-  });
-  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleMenuOpen = () => {
-    isMenuOpen
-    ? setIsMenuOpen(false)
-    : setIsMenuOpen(true)
-  }
- 
-  const handleInfoToolTip = () => {
-    setIsInfoToolTipOpen(true);
-  }
-
+  // GET User and Cards
   useEffect(() => {
     api
       .getAllneededData()
@@ -78,6 +72,7 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  // CLOSE popup by Esc
   useEffect(() => {
     const closeByEscape = (evt) => {
       if (evt.key === "Escape") {
@@ -88,19 +83,21 @@ function App() {
     return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
-  const closeByOverlayClick = (evt) => {
-    if (evt.target === evt.currentTarget) {
-      closeAllPopups();
-    }
-  };
+  // CHECK token
+  useEffect(() => {
+    tokenCheck();
+  }, []);
 
-  React.useEffect(() => {
+  // START page
+  const history = useHistory();
+
+  useEffect(() => {
     if (loggedIn) {
       history.push("/");
     }
   }, [history, loggedIn]);
 
-  // Card
+  // CARD
   const handleCardLike = (card) => {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     api
@@ -135,7 +132,7 @@ function App() {
     setDeletedCard(card);
   };
 
-  // Popups
+  // POPUPs
   const onEditProfile = () => {
     setIsEditProfilePopupOpen(true);
   };
@@ -174,12 +171,14 @@ function App() {
     api
       .setAvatar(data)
       .then((res) => {
+        setIsDataSet(true);
         setCurrentUser(res);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setIsLoading(false);
+        setIsDataSet(false);
       });
   };
 
@@ -188,34 +187,51 @@ function App() {
     api
       .setCard(data)
       .then((res) => {
+        setIsDataSet(true);
         setCards([res, ...cards]);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setIsLoading(false);
+        setIsDataSet(false);
       });
   };
 
+  const closeByOverlayClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closeAllPopups();
+    }
+  };
+
+  const toggleMenu = () => {
+    isMenuOpen ? setIsMenuOpen(false) : setIsMenuOpen(true);
+  };
+
+  const handleInfoToolTip = () => {
+    setIsInfoToolTipOpen(true);
+  };
+
+  // AUTH
   const handleLogin = (email, password) => {
     auth
       .authorize(email, password)
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem("token", data.token);
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("token", res.token);
           setUserData({ email: email });
           setLoggedIn(true);
           setIsMenuOpen(false);
           history.push("/");
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.log(err));
   };
 
   const handleRegister = (password, email) => {
     auth
       .register(password, email)
-      .then(() => {
+      .then((res) => {
         setIsDataSet(true);
         history.push("/sign-in");
         setInfoToolTipData({
@@ -231,6 +247,9 @@ function App() {
           title: "Что-то пошло не так! Попробуйте ещё раз.",
         });
         handleInfoToolTip();
+      })
+      .finally(() => {
+        setIsDataSet(false);
       });
   };
 
@@ -251,24 +270,27 @@ function App() {
             setLoggedIn(true);
           }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => console.log(err));
     }
   };
-
-  React.useEffect(() => {
-    tokenCheck();
-  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        {loggedIn && <MenuMobile
-        email={userData.email}
-        handleLogout={handleLogout}
-        isMenuOpen={isMenuOpen}
-        />}
+        {loggedIn && (
+          <MenuMobile
+            email={userData.email}
+            handleLogout={handleLogout}
+            isMenuOpen={isMenuOpen}
+          />
+        )}
 
-        <Header handleLogout={handleLogout} email={userData.email} handleMenuOpen={handleMenuOpen} isMenuOpen={isMenuOpen} />
+        <Header
+          handleLogout={handleLogout}
+          email={userData.email}
+          toggleMenu={toggleMenu}
+          isMenuOpen={isMenuOpen}
+        />
 
         <Switch>
           <ProtectedRoute
@@ -312,6 +334,7 @@ function App() {
           onClose={closeAllPopups}
           onAddPlace={handleAddPlaceSubmit}
           onCloseOverlay={closeByOverlayClick}
+          isDataSet={isDataSet}
         />
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
@@ -319,6 +342,7 @@ function App() {
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
           onCloseOverlay={closeByOverlayClick}
+          isDataSet={isDataSet}
         />
         <ImagePopup
           card={selectedCard}

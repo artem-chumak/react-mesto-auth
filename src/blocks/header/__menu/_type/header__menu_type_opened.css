@@ -27,13 +27,13 @@
 
 
 .header__menu_type_opened:before {
-  animation: open-one ease 0.4s forwards;
+  animation: open-one ease 0.5s forwards;
 }
 
 .header__menu_type_opened span {
-  animation: open-two ease 0.4s forwards;
+  animation: open-two ease 0.5s forwards;
 }
 
 .header__menu_type_opened:after {
-  animation: open-three ease 0.4s forwards;
+  animation: open-three ease 0.5s forwards;
 }

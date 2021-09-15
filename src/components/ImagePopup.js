@@ -1,4 +1,4 @@
-const ImagePopup = ({ card, onClose, onCloseOverlay }) => {
+export const ImagePopup = ({ card, onClose, onCloseOverlay }) => {
   return (
     <section
       onClick={onCloseOverlay}
@@ -22,5 +22,3 @@ const ImagePopup = ({ card, onClose, onCloseOverlay }) => {
     </section>
   );
 };
-
-export default ImagePopup;

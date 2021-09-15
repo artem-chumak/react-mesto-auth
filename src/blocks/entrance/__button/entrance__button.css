@@ -1,4 +1,4 @@
-.login__form-submit-btn {
+.entrance__button {
   height: 58px;
   margin: 0;
   padding: 0;
@@ -13,12 +13,12 @@
   border-radius: 2px;
 }
 
-.login__form-submit-btn:hover {
+.entrance__button:hover {
   opacity: .8;
 }
 
-@media screen and (max-width: 558px) {
-  .login__form-submit-btn {
+@media screen and (max-width: 425px) {
+  .entrance__button {
     height: 46px;
     font-size: 16px;
     line-height: 1.1;

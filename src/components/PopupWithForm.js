@@ -1,4 +1,4 @@
-const PopupWithForm = ({
+export const PopupWithForm = ({
   title,
   name,
   buttonText,
@@ -45,5 +45,3 @@ const PopupWithForm = ({
     </section>
   );
 };
-
-export default PopupWithForm;
