@@ -2,7 +2,7 @@
 // todo - Поменять фавикон
 // todo - Валидация форм
 // todo - Страница 404.
-// todo - Make comp Sign.js and use in Login.js and Rigister.js
+// todo - Make comp Entrance.js and use in Login.js and Rigister.js
 
 import { useState, useEffect } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";

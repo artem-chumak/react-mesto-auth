@@ -17,16 +17,14 @@ export const Header = ({ handleLogout, email, toggleMenu, isMenuOpen }) => {
               Выйти
             </Link>
           </div>
-          <button
-            className={
-              isMenuOpen
-                ? "header__menu header__menu_type_opened"
-                : "header__menu header__menu_type_closed"
-            }
-            onClick={toggleMenu}
-          >
-            <span />
-          </button>
+
+          <div className="hamburger-menu" onClick={toggleMenu}>
+            <div
+              className={
+                isMenuOpen ? "humburger-menu__menu humburger-menu__menu_clicked" : "humburger-menu__menu"
+              }
+            ></div>
+          </div>
         </Route>
 
         <Route path="/sign-in">
