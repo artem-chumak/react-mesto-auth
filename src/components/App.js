@@ -1,5 +1,6 @@
+//* Some similar components were built in different ways for practice.
+// todo - Плавное появление меню
 // todo - Добавить спинер на загрузку main
-// todo - Поменять фавикон
 // todo - Валидация форм
 // todo - Страница 404.
 // todo - Make comp Entrance.js and use in Login.js and Rigister.js
