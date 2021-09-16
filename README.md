@@ -19,10 +19,10 @@
  <img src="https://img.icons8.com/color/36/000000/css3.png"/>  
 - React: { useState, useEffect, useRef, createContext, useContext }, { Route, Switch, Redirect, useHistory, HashRouter }, api, fetch, authentification.  
  <img src="https://img.icons8.com/office/34/000000/react.png"/>  
-   BEM nested.  
-   <img src="https://img.icons8.com/fluency/36/000000/plugin.png"/>  
-   Figma.  
-   <img src="https://img.icons8.com/color/32/000000/figma--v1.png"/>  
+- BEM nested.  
+ <img src="https://img.icons8.com/fluency/36/000000/plugin.png"/>  
+- Figma.  
+ <img src="https://img.icons8.com/color/32/000000/figma--v1.png"/>  
 
 ### 🛸   Функциональные возможности проекта:
 
