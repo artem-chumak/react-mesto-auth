@@ -18,7 +18,7 @@
    CSS: flex, grid, @media.  
    <img src="https://img.icons8.com/color/36/000000/css3.png"/>  
    React:  
-   { useState, useEffect, useRef, createContext, useContext },  
+   { useState, useEffect, useRef, createContext, useContext },  
    { Route, Switch, Redirect, useHistory, HashRouter },  
    api, fetch, authentification.  
    <img src="https://img.icons8.com/office/32/000000/react.png"/>  
