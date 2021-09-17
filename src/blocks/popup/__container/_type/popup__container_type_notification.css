@@ -20,7 +20,7 @@
 
 
 @media screen and (max-width: 425px) {
-  .popup__container {
+  .popup__container_type_notification {
     padding: 50px 18px;
   }
 }

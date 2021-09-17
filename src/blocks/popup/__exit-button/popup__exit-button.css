@@ -27,8 +27,8 @@
   .popup__exit-button {
     height: 37px;
     width: 37px;
-    top: -51px;
-    right: 0;
+    top: -50px;
+    right: -8;
     background-image: url(../../../images/Exit-button-S.svg);
   }
 }
