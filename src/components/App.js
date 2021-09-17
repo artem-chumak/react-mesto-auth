@@ -4,6 +4,8 @@
 // todo - Валидация форм
 // todo - Страница 404.
 // todo - Make comp Entrance.js and use in Login.js and Rigister.js
+// todo - change Ref into controled comps (AddPlace and other)
+// todo - replace hamburger menu from App.js into Header.js
 
 import { useState, useEffect } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
