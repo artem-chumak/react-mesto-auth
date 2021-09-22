@@ -1,6 +1,6 @@
 //* Some similar components were built in different ways for practice.
 // todo - Плавное появление меню
-// todo - Добавить спинер на загрузку main
+///// todo - Добавить спинер на загрузку main
 // todo - Валидация форм
 // todo - Страница 404.
 // todo - Make comp Entrance.js and use in Login.js and Rigister.js
@@ -27,6 +27,7 @@ import { Register } from "./Register"; // inputs' data as object + onChange
 import { InfoToolTip } from "./InfoTooltip";
 
 function App() {
+  const [isLoader, setIsLoader] = useState(false);
   // USER & CARDS
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({
@@ -63,6 +64,7 @@ function App() {
 
   // GET User and Cards
   useEffect(() => {
+    setIsLoader(true);
     api
       .getAllneededData()
       .then((res) => {
@@ -70,7 +72,10 @@ function App() {
         setCards(cards);
         setCurrentUser(userInfo);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoader(false);
+      });
   }, []);
 
   // CLOSE popup by Esc
@@ -287,20 +292,22 @@ function App() {
         />
 
         <Switch>
-          <ProtectedRoute
-            exact
-            path="/"
-            loggedIn={loggedIn}
-            handleEditProfileClick={onEditProfile}
-            handleAddPlaceClick={onAddPlace}
-            handleEditAvatarClick={onEditAvatar}
-            handleCardClick={handleCardClick}
-            handleCardDeleteClick={handleCardDeleteClick}
-            cards={cards}
-            onCardLike={handleCardLike}
-            component={Main}
-          />
 
+          : <ProtectedRoute
+          exact
+          path="/"
+          isLoader={isLoader}
+          loggedIn={loggedIn}
+          handleEditProfileClick={onEditProfile}
+          handleAddPlaceClick={onAddPlace}
+          handleEditAvatarClick={onEditAvatar}
+          handleCardClick={handleCardClick}
+          handleCardDeleteClick={handleCardDeleteClick}
+          cards={cards}
+          onCardLike={handleCardLike}
+          component={Main}
+        />
+         
           <Route path="/sign-in">
             <Login handleLogin={handleLogin} />
           </Route>

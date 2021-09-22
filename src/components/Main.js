@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Card } from "./Card";
+import { Loader } from "./Loader";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export const Main = ({
@@ -10,6 +11,7 @@ export const Main = ({
   handleCardDeleteClick,
   cards,
   onCardLike,
+  isLoader,
 }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -40,7 +42,9 @@ export const Main = ({
       </section>
       <section className="section elements">
         <ul className="elements__list">
-          {cards.map((card) => {
+          {isLoader
+          ? <Loader />
+          : cards.map((card) => {
             return (
               <Card
                 key={card._id}
@@ -50,7 +54,8 @@ export const Main = ({
                 onCardDeleteClick={handleCardDeleteClick}
               />
             );
-          })}
+          })
+          }
         </ul>
       </section>
     </main>
